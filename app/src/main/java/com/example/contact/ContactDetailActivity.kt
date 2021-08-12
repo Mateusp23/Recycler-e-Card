@@ -2,6 +2,7 @@ package com.example.contact
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 
 class ContactDetailActivity : AppCompatActivity() {
@@ -12,9 +13,13 @@ class ContactDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_contact_detail)
 
-        //initToolbar()
-        //getExtras()
-        //bindViews()
+        initToolbar()
+        getExtras()
+        bindViews()
+    }
+
+    companion object {
+        const val EXTRA_CONTACT: String = "EXTRA_CONTACT"
     }
 
     private fun initToolbar() {
@@ -24,15 +29,12 @@ class ContactDetailActivity : AppCompatActivity() {
     }
 
     private fun getExtras() {
-        //contact = intent.getParcelableExtra(EXTRA_CONTACT)
-    }
-
-    companion object {
-        const val EXTRA_CONTACT: String = "EXTRA_CONTACT"
+        contact = intent.getParcelableExtra(EXTRA_CONTACT)
     }
 
     private fun bindViews() {
-        TODO("Not yet implemented")
+        findViewById<TextView>(R.id.tv_name).text = contact?.name
+        findViewById<TextView>(R.id.tv_phone).text = contact?.phone
     }
 
     override fun onSupportNavigateUp(): Boolean {

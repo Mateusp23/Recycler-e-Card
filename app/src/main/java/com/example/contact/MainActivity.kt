@@ -13,6 +13,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.contact.ContactDetailActivity.Companion.EXTRA_CONTACT
 
 class MainActivity : AppCompatActivity(), ClickItemContactListener {
 
@@ -57,11 +58,11 @@ class MainActivity : AppCompatActivity(), ClickItemContactListener {
                 ),
                 Contact(
                     "Matue",
-                    "(51) 99938-1964",
+                    "(85) 99999-2344",
                 ),
                 Contact(
                     "lionel messi",
-                    "(51) 99938-1964",
+                    "(11) 98800-0990",
                 ),
             )
         )
@@ -92,6 +93,8 @@ class MainActivity : AppCompatActivity(), ClickItemContactListener {
     }
 
     override fun clickItemContact(contact: Contact) {
-        startActivity(Intent(this,ContactDetailActivity::class.java))
+        val intent = Intent(this,ContactDetailActivity::class.java)
+        intent.putExtra(EXTRA_CONTACT, contact)
+        startActivity(intent)
     }
 }
